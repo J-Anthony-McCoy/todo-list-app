@@ -7,18 +7,15 @@
 
 // Extra Credit: - When a list item is clicked, cross it out, then remove it after 1 second.
 
-// declaring global variables for grabbing elements in HTML
+// declaring global variables for grabbing elements in HTML. Notice the '#' because these are IDs in HTML file
 const wholeList = document.querySelector("#wholeList");
 const submit = document.querySelector("#submit");
 const input = document.querySelector("#input");
 
-// event listener for clicking on 'Add to List' on page
-submit.addEventListener("click", addItem);
-
 // add item to list function
 function addItem(event) {
-  event.preventDefault();
-  let newItem = document.getElementById("input").value;
+  event.preventDefault(); // this stops page from refreshing after clicking submit button
+  let newItem = input.value; // 'input' is a defined global variable
   let newLi = document.createElement("li");
   // alerts user if submit button is clicked with no text in box
   if (!newItem) {
@@ -26,12 +23,12 @@ function addItem(event) {
   } else {
     newLi.innerHTML = newItem;
     wholeList.appendChild(newLi);
-    document.getElementById("input").value = "";
+    input.value = "";
   }
 }
 
 // remove list item if clicked. line strike and 1s delay
-wholeList.addEventListener("click", lineStrike);
+wholeList.addEventListener("click", lineStrike); // within parentheses - first element is action JS is listening for, second is function that executes
 
 wholeList.addEventListener("click", removeItem);
 
@@ -43,7 +40,7 @@ function removeItem(e) {
   setTimeout(function () {
     e.target.remove();
   }, 1000);
-};
+}
 
 // CANNOT GET WORKING - LIVE UPDATE LIST OF ITEMS REMAINING IN LIST
 // const h3 = document.querySelector("#remaining");
@@ -52,3 +49,5 @@ function removeItem(e) {
 // let numberLeft = document.createElement("h4")
 // numberLeft.innerHTML = remaining;
 // h3.appendChild(numberLeft);
+
+// newLI.textContent = newItem;
