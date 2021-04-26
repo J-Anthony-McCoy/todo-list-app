@@ -30,22 +30,20 @@ function addItem(event) {
   }
 }
 
-// remove list item if clicked. has 1s delay
+// remove list item if clicked. line strike and 1s delay
+wholeList.addEventListener("click", lineStrike);
+
 wholeList.addEventListener("click", removeItem);
 
-function removeItem(e) {
-  e.target.remove();
+function lineStrike(e) {
+  e.target.style.textDecoration = "line-through";
 }
 
-// CANNOT GET WORKING - STRIKE THRU
-
-// function removeItem(e) {
-//     function lineStrike(){
-//         wholeList.innerHTML = textDecoration.line-through;
-//     }
-//   setTimeout(function(){e.target.remove();
-// }, 1000)};
-
+function removeItem(e) {
+  setTimeout(function () {
+    e.target.remove();
+  }, 1000);
+};
 
 // CANNOT GET WORKING - LIVE UPDATE LIST OF ITEMS REMAINING IN LIST
 // const h3 = document.querySelector("#remaining");
